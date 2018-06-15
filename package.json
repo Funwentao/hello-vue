@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack-prod": "set NODE_ENV=production && webpack --config webpack.config.js",
+    "webpack-dev": "webpack --config webpack.config.js",
+    "dev":""
   },
   "author": "",
   "license": "ISC"
