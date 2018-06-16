@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-prod": "set NODE_ENV=production && webpack --config webpack.config.js",
     "webpack-dev": "set NODE_ENV=development && webpack --config webpack.config.js",
-    "dev": "",
+    "dev": "webpack-dev-server --host 0.0.0.0 --port 8080 --hot --inline",
     "eslint": "eslint --init"
   },
   "author": "",
