@@ -33,6 +33,7 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
+    "node-taobao-topclient": "^0.1.7",
     "vue": "^2.5.16",
     "vuex": "^3.0.1"
   }

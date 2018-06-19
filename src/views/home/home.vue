@@ -2,6 +2,9 @@
     <div>
         <p>{{msg}}</p>
         <p><button @click="fn">按钮</button></p>
+        <p>
+            <input type="text" v-model.lazy="input" @input="inputHandler">
+        </p>
     </div>
 </template>
 <script>
@@ -10,6 +13,4 @@ export default {
     ...home
 }
 </script>
-<style  scope>
-@import "./home.css";
-</style>
+<style  src="./home.css" scope></style>

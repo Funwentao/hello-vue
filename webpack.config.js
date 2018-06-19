@@ -33,7 +33,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: '二维码',
+            title: '首页',
             filename: './view/home.html',
             template: './index.html',
             chunks:['app']
