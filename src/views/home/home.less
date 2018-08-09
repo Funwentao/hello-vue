@@ -1,0 +1,106 @@
+@class-primary: primary;
+@primary: #409EFF;
+
+@class-success: success;
+@success: #67c23a;
+
+@class-info: info;
+@info: #909399;
+
+@class-warning: warning;
+@warning: #e6a23c;
+
+@class-danger: danger;
+@danger: #f56c6c;
+
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+#app {
+    height: 100%;
+    .el-container {
+        height: 100%;
+        background-color: #E9EEF3;
+        .el-header, .el-footer {
+            color: #333;
+            text-align: center;
+            padding: 5px;
+            .btn-content {
+                display: inline-block;
+                padding: 5px;
+                background: white;
+            }
+        }
+        .el-main {
+            color: #333;
+            text-align: center;
+            .m20 {
+                margin: 20px;
+            }
+        }
+    }
+}
+.theme(@theme) {
+    .@{theme} {
+        .el-header, .el-footer,  {
+            background-color: @@theme;
+        }
+        .el-main {
+            .el-button {
+                background-color: @@theme;
+                color: white;
+            }
+            .el-slider__bar {
+                background-color: @@theme;
+            }
+            .el-slider__button {
+                border-color: @@theme;
+            }
+            .el-checkbox__inner{
+                &:hover {
+                    border-color: @@theme;
+                }
+            }
+            .el-input__inner {
+                &:focus {
+                    border-color: @@theme;
+                }
+            }
+            .el-checkbox__input.is-checked .el-checkbox__inner {
+                background-color: @@theme;
+                border-color: @@theme;
+            }
+            .el-checkbox__input.is-focus .el-checkbox__inner {
+                border-color: @@theme;
+            }
+            .el-checkbox__label {
+                color: @@theme;
+            }
+            .el-select {
+                .el-input.is-focus .el-input__inner {
+                    border-color: @@theme;
+                }
+                .el-input__inner {
+                    &:focus {
+                        border-color: @@theme;
+                    }
+                }
+            }
+            .el-switch.is-checked .el-switch__core {
+                border-color: @@theme;
+                background-color: @@theme;
+            }
+        }
+        .el-select-dropdown__item.selected{
+            color: @@theme;
+        }
+    }
+}
+.theme(@class-primary);
+.theme(@class-success);
+.theme(@class-info);
+.theme(@class-warning);
+.theme(@class-danger);
