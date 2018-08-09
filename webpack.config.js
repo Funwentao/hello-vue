@@ -1,44 +1,63 @@
+const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const webpack = require('webpack');
+
 
 module.exports = {
     entry :{
-        app:"./src/main.js"
+        index: "./src/main.js"
     },
     output:{
-        filename: "./js/[name].js"
+        path: path.resolve(__dirname,'dist'),
+        filename: '[name]-bundle.js'
     },
     module:{
-        rules:[{
+        rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['es2015','stage-2'],
-                    // plugins: [['import', {"libraryName": "antd", "style": "css"}]]
-                }
+                loader: 'babel-loader'
             }
         },{
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                use: "css-loader"
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader', 
+                use: ['css-loader']
             })
         },{
             test: /\.vue$/,
-            loader: 'vue-loader'
+            loader: 'vue-loader',
+        },{
+            test: /\.less$/,
+            //loader: "style-loader!css-loader!less-loader",
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader', 
+                use: ['css-loader', 'less-loader']
+            })
+        },{
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            loader: 'url-loader'
         }]
+    },
+    devServer: {
+        contentBase:path.resolve(__dirname,'dist'), 
+        historyApiFallback: true,
+        inline: true,
+        host: 'localhost',
+        port: '8080',
+        open: true
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: '首页',
-            filename: './view/home.html',
+            filename: 'index.html',
             template: './index.html',
-            chunks:['app']
+            chunks:['index']
         }),
         new VueLoaderPlugin(),
         new ExtractTextPlugin("./css/[name].css"),
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
